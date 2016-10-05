@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace CSharpOv4.Classes
 {
     public class Billett
     {
-        Billett(string tribunenavn, double pris)
+        public Billett(string tribunenavn, double pris)
         {
             Tribunenavn = tribunenavn;
             Pris = pris;
@@ -32,11 +33,35 @@ namespace CSharpOv4.Classes
         }
     }
 
-    public class Ståbillett
+    public class Ståbillett : Ståtribune
     {
-        Ståbillett()
+        public Ståbillett(string navn, double pris, int kap) : base(navn, pris, kap)
         {
 
+        }
+
+        public DataTable KjøpBillett(int antVoksne, int antBarn)
+        {
+            DataTable dt = new DataTable();
+            List<string> lst = new List<string>();
+            
+            dt.Columns.Add("Plass", typeof(string));
+            dt.Columns.Add("Pris", typeof(string));
+            for (int i = 0; i < antVoksne; i++)
+            {
+                lst = SelgPlasser(antVoksne);
+                dt.Rows.Add(lst.ElementAt(0), Pris);
+            }
+
+            lst.Clear();
+
+            for (int i = 0; i < antBarn; i++)
+            {
+                lst = SelgPlasser(antBarn);
+                dt.Rows.Add(lst.ElementAt(0), barnePris());
+            }
+
+            return dt;
         }
 
         public override string ToString()
@@ -77,6 +102,13 @@ namespace CSharpOv4.Classes
         {
             get;
             set;
+        }
+
+        public DataTable KjøpBillett(int antVoksne, int antBarn)
+        {
+            DataTable dt = new DataTable();
+
+            return dt;
         }
 
         public override string ToString()

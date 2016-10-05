@@ -16,5 +16,10 @@ namespace CSharpOv4.Classes
             int antPrRad = Kapasitet / AntallRader;
             tilskuer = new string[AntallRader, antPrRad];
         }
+
+        public override double barnePris()
+        {
+            return Pris / 2;
+        }
     }
 }

@@ -34,17 +34,22 @@ namespace CSharpOv4.Classes
             }
         }
 
-        private bool SelgPlasser(int antall)
+        public List<string> SelgPlasser(int antall) //Kunne ha brukt Tuple(bool, int, int)
         {
+            List<string> lst = new List<string>();
             int kapPrRad = Kapasitet / AntallRader;
             int i = 0;
             while (i < AntallRader && antallSolgtPrRad[i] + antall > kapPrRad) i++;
             if (i < AntallRader)
             {
                 antallSolgtPrRad[i] += antall;
-                return true;
+                int plass = kapPrRad - antall;
+                lst.Add("true");
+                lst.Add("Din rad er " + i);
+                lst.Add("Din plass er " + plass);
+                return lst;
             }
-            else return false;
+            else { lst.Add("false"); return lst; };
         }
         public override string ToString()
         {

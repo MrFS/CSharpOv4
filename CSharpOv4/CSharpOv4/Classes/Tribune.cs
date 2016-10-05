@@ -44,6 +44,11 @@ namespace CSharpOv4.Classes
                 return 0;
             }
         }
+
+        public virtual double barnePris()
+        {
+            return Pris / 2;
+        }
         public override string ToString()
         {
             return Navn + " har kapasitet " + Kapasitet + " og pris " + Pris + " kroner.";

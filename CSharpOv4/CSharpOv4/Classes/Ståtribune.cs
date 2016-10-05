@@ -22,14 +22,22 @@ namespace CSharpOv4.Classes
             }
         }
 
-        public bool SelgPlasser(int antall)
+        public List<string> SelgPlasser(int antall)
         {
+            List<string> lst = new List<string>();
             if (AntallSolgtePlasser + antall <= Kapasitet)
             {
                 antallSolgtePlasser += antall;
-                return true;
+
+                int plass = Kapasitet - antallSolgtePlasser;
+
+                lst.Add("Du har ståplass " + plass);
+                return lst;
             }
-            else return false;
+            else { lst.Add("Ingen ledige plasser for ståtribunen"); return lst; };
+
         }
+
+
     }
 }
