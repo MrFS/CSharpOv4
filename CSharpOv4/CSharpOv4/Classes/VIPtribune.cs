@@ -17,9 +17,11 @@ namespace CSharpOv4.Classes
             tilskuer = new string[AntallRader, antPrRad];
         }
 
-        public override double barnePris()
+        public override double BarnePris()
         {
-            return Pris / 2;
+            return Pris;   
         }
     }
+
+
 }

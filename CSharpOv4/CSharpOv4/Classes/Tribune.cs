@@ -33,9 +33,24 @@ namespace CSharpOv4.Classes
             private set;
         }
 
+        public int SolgteBarn
+        {
+            get;
+            set;
+        }
+
+        public int SolgteVoksne
+        {
+            get;
+            set;
+        }
+
         public double SolgtFor()
         {
-            return AntallSolgtePlasser * Pris;
+            double sumBarn = SolgteBarn * BarnePris();
+            double sumVoksne = SolgteVoksne * Pris;
+
+            return sumVoksne + sumBarn;
         }
         public virtual int AntallSolgtePlasser
         {
@@ -45,7 +60,7 @@ namespace CSharpOv4.Classes
             }
         }
 
-        public virtual double barnePris()
+        public virtual double BarnePris()
         {
             return Pris / 2;
         }
